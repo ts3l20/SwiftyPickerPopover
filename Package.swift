@@ -5,6 +5,9 @@ import PackageDescription
 
 let package = Package(
     name: "SwiftyPickerPopover",
+    platforms: [
+         .iOS(.v9),
+     ],
     products: [
         // Products define the executables and libraries a package produces, and make them visible to other packages.
         .library(
@@ -21,8 +24,18 @@ let package = Package(
         .target(
             name: "SwiftyPickerPopover",
             dependencies: []),
-        .testTarget(
-            name: "SwiftyPickerPopoverTests",
-            dependencies: ["SwiftyPickerPopover"]),
-    ]
+             path: "SwiftyPickerPopover",
+             exclude: ["Info.plist"],
+             resources: [
+                 .process("Base.lproj"),
+                 .process("en.lproj"),
+                 .process("ja.lproj"),
+                 .process("AbstractPopover.storyboard"),
+                 .process("ColumnStringPickerPopover.storyboard"),
+                 .process("CountdownPickerPopover.storyboard"),
+                 .process("DatePickerPopover.storyboard"),
+                 .process("StringPickerPopover.storyboard"),
+             ]),
+    ],
+     swiftLanguageVersions: [.v5]
 )
